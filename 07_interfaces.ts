@@ -59,7 +59,7 @@ const sphere:ThreeDShape={
     area(){
       return 4 * Math.PI 
     },
-    volume() {
+    volume(){
         return (4/3)*Math.PI    
     },
 }

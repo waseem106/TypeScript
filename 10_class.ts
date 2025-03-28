@@ -71,3 +71,85 @@ console.log(obj3.getName())
 
 // Interfaces : interfaces can be used in typescript to define the type a class must folow  through the //?implements keyword
 
+interface MyShape {
+    name:string;
+    color:string;
+    myArea():number;
+}
+
+class Rectangle implements MyShape {
+   
+    public width:number
+    public hieght:number
+    name="waseem";
+    color="red";
+
+    constructor(width:number,hieght:number)
+    {
+        this.width=width;
+        this.hieght=hieght
+    }
+    myArea(): number {
+        return this.width * this.hieght
+    }
+}
+
+const obj4=new Rectangle(23,23)
+console.log(obj4.myArea())
+
+
+
+
+//? Override
+// when class extends other class it can replace the  members of the  parent class with the same name
+
+
+
+class Parent{
+    greet():void{
+        console.log("Hello from parent class")
+    }
+}
+
+class Child extends Parent{
+        override greet(): void {
+            console.log("Hello from  child class")    
+        }
+}
+
+
+const p1=new Parent()
+p1.greet()
+const c1 =new Child()
+c1.greet()
+
+
+
+
+// abstract clases 
+// abstract classes are used as blue prints for the other classes
+//Can have abstract methods (methods with no implementation).
+//Can have regular methods with implementations.
+//Must be extended by another class to use its properties and methods.
+//we cannot  create an instance of object class
+
+
+abstract class Vehicle{
+    abstract carName():void;
+
+    mycar():void{
+        console.log("I am Vehicle Class")
+    }
+}
+
+
+class Car extends Vehicle{
+     override carName(): void {
+            console.log("I am override in car class")
+    }
+}
+
+// const veh=new Vehicle()  canot create a instance of abstract vehicle class
+const carobj=new Car()
+carobj.carName()
+carobj.mycar()

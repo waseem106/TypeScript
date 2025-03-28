@@ -64,4 +64,69 @@ var obj3 = new Person("waseem");
 console.log(obj3.getName());
 obj3.setName("hamza"); // it will change the value of the class member
 console.log(obj3.getName());
-// Interfaces : interfaces can be used in typescript to define the type a class must folow  through the //?implements keyword
+var Rectangle = /** @class */ (function () {
+    function Rectangle(width, hieght) {
+        this.name = "waseem";
+        this.color = "red";
+        this.width = width;
+        this.hieght = hieght;
+    }
+    Rectangle.prototype.myArea = function () {
+        return this.width * this.hieght;
+    };
+    return Rectangle;
+}());
+var obj4 = new Rectangle(23, 23);
+console.log(obj4.myArea());
+//? Override
+// when class extends other class it can replace the  members of the  parent class with the same name
+var Parent = /** @class */ (function () {
+    function Parent() {
+    }
+    Parent.prototype.greet = function () {
+        console.log("Hello from parent class");
+    };
+    return Parent;
+}());
+var Child = /** @class */ (function (_super) {
+    __extends(Child, _super);
+    function Child() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Child.prototype.greet = function () {
+        console.log("Hello from  child class");
+    };
+    return Child;
+}(Parent));
+var p1 = new Parent();
+p1.greet();
+var c1 = new Child();
+c1.greet();
+// abstract clases 
+// abstract classes are used as blue prints for the other classes
+//Can have abstract methods (methods with no implementation).
+//Can have regular methods with implementations.
+//Must be extended by another class to use its properties and methods.
+//we cannot  create an instance of object class
+var Vehicle = /** @class */ (function () {
+    function Vehicle() {
+    }
+    Vehicle.prototype.mycar = function () {
+        console.log("I am Vehicle Class");
+    };
+    return Vehicle;
+}());
+var Car = /** @class */ (function (_super) {
+    __extends(Car, _super);
+    function Car() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Car.prototype.carName = function () {
+        console.log("I am override in car class");
+    };
+    return Car;
+}(Vehicle));
+// const veh=new Vehicle()  canot create a instance of abstract vehicle class
+var carobj = new Car();
+carobj.carName();
+carobj.mycar();
